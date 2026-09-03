@@ -1,7 +1,7 @@
 import "./App.css";
 export default function App() {
  return (
- <main className="app">{/*tudo mundo fica dentro main*/}
+ <main className="app">{/*tudo mundos fica dentro main*/}
  <header className="hero">
  <p className="eyebrow">MY DAILY HABITS</p>
  <h1>Minha primeira react</h1>
