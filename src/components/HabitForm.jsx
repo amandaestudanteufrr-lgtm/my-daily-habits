@@ -1,7 +1,17 @@
-import { useState } from "react";
-export default function HabitForm({ onAddHabit }) {
+import { useContext, useState } from "react";
+import { HabitsContext } from "../context/HabitsContext";
+export default function HabitForm() {
+ const habitsContext = useContext(HabitsContext);
  const [form, setForm] = useState({ title: "", goal: "" });
  const [error, setError] = useState("");
+ if (!habitsContext) {
+ throw new Error("HabitForm precisa estar dentro de HabitsProvider.");
+ }
+ const { addHabit } = habitsContext;
+ // mantenha handleChange como na aula anterior
+ // no handleSubmit, substitua onAddHabit(...) por addHabit(...)
+
+ 
  function handleChange(event) {
  const { name, value } = event.target;
  setForm((currentForm) => ({
@@ -17,7 +27,7 @@ export default function HabitForm({ onAddHabit }) {
  setError("Preencha o hábito e a meta.");
  return;
  }
- onAddHabit({
+ addHabit({
  id: crypto.randomUUID(),
  title,
  goal,
