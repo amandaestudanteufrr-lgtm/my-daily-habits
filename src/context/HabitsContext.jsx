@@ -20,6 +20,9 @@ export function HabitsProvider({ children }) {
  useEffect(() => {
  localStorage.setItem(STORAGE_KEY, JSON.stringify(habits));
  }, [habits]);
+ useEffect(() => {
+ document.title = `${completedCount}/${habits.length} hábitos concluídos`;
+ }, [completedCount, habits.length]);
  function addHabit(newHabit) {
  setHabits((current) => [...current, newHabit]);
  }
